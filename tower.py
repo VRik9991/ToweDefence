@@ -23,7 +23,7 @@ class Tower:
         count = []
         for monster in monsters:
             math.sqrt((monster.rect.center.x - self.rect.center.x)**2 + (monster.rect.center.y - self.rect.center.y)**2)
-        return max(count)
+        return min(count)
 
 
 
