@@ -13,7 +13,7 @@ mon_image = pygame.image.load('images/mon.png')
 
 
 play_map = Map(map_image, ((1200, 880), (1200, 600), (400, 600), (400, 250), (1650, 250), (1650, 470)))
-route = play_map.route_returner()
+
 
 monsters = []
 

@@ -7,5 +7,3 @@ class Map:
         self.image = image
     def display(self, screen):
         screen.blit(self.image, self.rect)
-    def route_returner(self):
-        return self.route
