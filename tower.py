@@ -20,6 +20,10 @@ class Tower:
     def place(self, x, y):
         self.rect = pygame.rect(x, y, 10, 10)
     def attack(self,monsters):
+        count = []
         for monster in monsters:
+            math.sqrt((monster.rect.center.x - self.rect.center.x)**2 + (monster.rect.center.y - self.rect.center.y)**2)
+        return max(count)
 
-            if monster.rect.center.x
+
+
