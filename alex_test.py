@@ -9,13 +9,17 @@ y_length_of_screen = user32.GetSystemMetrics(1)
 screen = pygame.display.set_mode((x_length_of_screen, y_length_of_screen))
 
 map_image = pygame.image.load('images/Map_TW.png')
-mon_image = pygame.image.load('images/mon.png')
+route = []
 
 
-play_map = Map(map_image, ((1200, 880), (1200, 600), (400, 600), (400, 250), (1650, 250), (1650, 470)))
+with open('maps', 'r') as file:
+    Opener = file.readlines()
 
-
-monsters = []
+for i in range(len(Opener)):
+    route_part = (int((Opener[i].split(' '))[0]), int((Opener[i].split(' '))[1]))
+    route.append(route_part)
+print(route)
+play_map = Map(map_image, route)
 
 running = True
 clock = pygame.time.Clock()
