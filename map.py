@@ -1,5 +1,11 @@
-class BaseTower:
-    def __init__(self, attack_speed, attack_damage, damage_types, rect, image, cooldown, projectiles):
-        self.rect = pygame.Rect(x, y, side1, side2)
-        self.speed_x = speed_x
-        self.color = (0, 153, 0)
+import pygame
+
+class Map:
+    def __init__(self, image, route):
+        self.route = route
+        self.rect = pygame.Rect(0, 0, 0, 0)
+        self.image = image
+    def display(self, screen):
+        screen.blit(self.image, self.rect)
+    def route_returner(self):
+        return self.route
