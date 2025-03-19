@@ -1,5 +1,5 @@
 import pygame
-import time
+import math
 
 
 class Projectile:
@@ -9,39 +9,22 @@ class Projectile:
         self.target = target
         self.damage = damage
         self.speed = speed
+        self.hit = False
 
     def display(self, screen):
         screen.blit(self.image, self.rect)
 
-    def move(self):
-        self.rect.x += self.speed
-        self.rect.y += self.speed
-
-
-class Test:
-    def __init__(self):
-        self.image = pygame.image.load('fireball.png')
-        self.rect = self.image.get_rect(center=(400,350))
-
-    def display(self, screen):
-        screen.blit(self.image, self.rect)
-
-
-test = Test()
-projectile = Projectile(100, 100, test, 10, 1)
-
-screen = pygame.display.set_mode((800, 800))
-running = True
-while running:
-    screen.fill((0, 0, 0))
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    projectile.display(screen)
-    projectile.move()
-
-    test.display(screen)
-
-    pygame.display.flip()
+    def move(self, target):
+        if not self.hit:
+            a = abs(self.rect.x - target.rect.x)
+            b = abs(self.rect.y - target.rect.y)
+            c = math.hypot(a, b)
+            if c > self.speed:
+                cos = a / c
+                sin = b / c
+                lx = self.speed * cos
+                ly = self.speed * sin
+                self.rect.x += lx
+                self.rect.y += ly
+            else:
+                self.hit = True
