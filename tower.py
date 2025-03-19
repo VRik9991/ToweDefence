@@ -9,7 +9,7 @@ class Tower:
         self.damage_type: DamageType = damage_type
         self.attack_damage = demage
         self.rect = None
-        self.image = pygame.image.load("—Pngtree—stereo 2.5d building tower defense_4055247.png")
+        self.image = pygame.image.load("small_tower.png")
         self.range = 40
         self.cooldown = 0.2
         self.projectiles = []

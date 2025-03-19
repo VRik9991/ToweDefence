@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ca0d812-e0fc-4b6c-9a9e-f51f2e31a497" name="Changes" comment="I did 72/81 of task">
+    <list default="true" id="6ca0d812-e0fc-4b6c-9a9e-f51f2e31a497" name="Changes" comment="2nd try">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/—Pngtree—stereo 2.5d building tower defense_4055247.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "#6 on tower",
-    "last_opened_file_path": "C:/Users/alexe/PycharmProjects/Artifacts",
+    "last_opened_file_path": "C:/Users/Даня/PycharmProjects/TowerDefence",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,6 +66,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Даня\PycharmProjects\TowerDefence" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Даня\PycharmProjects\TowerDefence" />
     </key>
@@ -112,6 +117,7 @@
       <workItem from="1741799517831" duration="11000" />
       <workItem from="1741799551541" duration="4290000" />
       <workItem from="1741978916311" duration="1183000" />
+      <workItem from="1742404306424" duration="941000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -137,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741803804181</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2nd try">
+      <option name="closed" value="true" />
+      <created>1741983723819</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741983723819</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +160,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="I did 72/81 of task" />
-    <option name="LAST_COMMIT_MESSAGE" value="I did 72/81 of task" />
+    <MESSAGE value="2nd try" />
+    <option name="LAST_COMMIT_MESSAGE" value="2nd try" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TowerDefence$main.coverage" NAME="main Coverage Results" MODIFIED="1741802438962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
