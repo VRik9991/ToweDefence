@@ -1,2 +1,3 @@
-.idee
 .venv
+.idea
+*.pycache

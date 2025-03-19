@@ -19,12 +19,12 @@ class Tower:
 
     def place(self, x, y):
         self.rect = pygame.rect(x, y, 10, 10)
-    def attack(self,monsters):
+
+    def attack(self, monsters):
         count = []
         for monster in monsters:
-            count.append(math.sqrt((monster.rect.center.x - self.rect.center.x)**2 + (monster.rect.center.y - self.rect.center.y)**2))
-        self.projectiles.append(monsters[count.index(min(count))])
-        return monsters[count.index(min(count))]
-
-
-
+            count.append(math.sqrt(
+                (monster.rect.center.x - self.rect.center.x) ** 2 + (monster.rect.center.y - self.rect.center.y) ** 2))
+        count_smallest = count.index(min(count))
+        self.projectiles.append(monsters[count_smallest])
+        return monsters[count_smallest]
