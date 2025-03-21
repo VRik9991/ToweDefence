@@ -5,7 +5,6 @@ class Game:
         self.monsters=monsters
         self.towers=towers
         self.map = map
-        self.route = self.map.route
     def display(self):
         for monster in self.monsters:
             monster.display()
@@ -14,8 +13,8 @@ class Game:
         self.map.display()
     def run(self):
         for tower in self.towers:
-            tower.attack()
+            tower.attack(self.monsters)
         for monster in self.monsters:
-            monster.move(self.route[monster.counter])
+            monster.move(self.map.route[monster.counter])
 
 
