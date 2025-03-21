@@ -28,3 +28,4 @@ class Projectile:
                 self.rect.y += ly
             else:
                 self.hit = True
+                target.hp -= self.damage
