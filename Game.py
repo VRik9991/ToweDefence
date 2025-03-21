@@ -5,12 +5,12 @@ class Game:
         self.monsters=monsters
         self.towers=towers
         self.map = map
-    def display(self):
+    def display(self,screen):
         for monster in self.monsters:
-            monster.display()
+            monster.display(screen)
         for tower in self.towers:
-            tower.display()
-        self.map.display()
+            tower.display(screen)
+        self.map.display(screen)
     def run(self):
         for tower in self.towers:
             tower.attack(self.monsters)
