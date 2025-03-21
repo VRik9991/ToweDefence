@@ -4,7 +4,7 @@ import math
 
 class Projectile:
     def __init__(self, x, y, target, damage, speed):
-        self.image = pygame.image.load('fireball.png')
+        self.image = pygame.image.load('assets/projectile_assets/fireball.png')
         self.rect = self.image.get_rect(center=(x, y))
         self.target = target
         self.damage = damage
