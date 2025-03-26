@@ -33,4 +33,4 @@ class Monster:
             if self.health <= 0:
                 live = False
     def display(self, screen):
-        screen.blit(self.image, self.rect)
+        screen.blit(pygame.image.load(self.image), self.rect)
