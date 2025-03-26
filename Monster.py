@@ -11,12 +11,11 @@ class MonsterResistances:
     water: float
 
 class Monster:
-    def __init__(self, speed, spawn, hp, image, resistances: MonsterResistances):
+    def __init__(self, speed, spawn, hp, image):
         self.x = spawn[0]
         self.y = spawn[1]
         self.speed = speed
         self.live = True
-        self.resistances = resistances
         self.image = image
         self.rect = pygame.Rect(self.x, self.y, 10, 10)
         self.health = hp

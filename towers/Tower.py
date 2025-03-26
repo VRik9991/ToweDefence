@@ -8,8 +8,8 @@ class Tower:
         self.attack_speed = attack_speed
         self.damage_type: DamageType = damage_type
         self.attack_damage = demage
-        self.rect = None
-        self.image = pygame.image.load("assets/tower_assets/small_tower.png")
+        self.rect = pygame.Rect(100,250,10,10)
+        self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
         self.range = 40
         self.cooldown = 0.2
         self.projectiles = []
@@ -24,7 +24,7 @@ class Tower:
         count = []
         for monster in monsters:
             count.append(math.sqrt(
-                (monster.rect.center.x - self.rect.center.x) ** 2 + (monster.rect.center.y - self.rect.center.y) ** 2))
+                (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2))
         count_smallest = count.index(min(count))
         self.projectiles.append(monsters[count_smallest])
         return monsters[count_smallest]
