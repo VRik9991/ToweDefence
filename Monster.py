@@ -19,16 +19,19 @@ class Monster:
         self.image = image
         self.rect = pygame.Rect(self.x, self.y, 10, 10)
         self.health = hp
-        self.counter = 0
+        self.counter = 1
 
     def move(self, coordinates):
+        print(coordinates)
         if self.live:
             cos = coordinates[0] / coordinates[1]
             sin = coordinates[1] / coordinates[0]
-            lx = self.speed * cos
-            ly = self.speed * sin
+            lx = self.speed * sin
+            ly = self.speed * cos
             self.rect.x += lx
             self.rect.y += ly
+            if self.rect.x - coordinates[0] <= self.speed or self.rect.y - coordinates[1] <= self.speed:
+                self.counter += 1
             if self.health <= 0:
                 live = False
     def display(self, screen):
