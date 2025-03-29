@@ -4,16 +4,17 @@ from monsters.Monster import Monster
 from Game import Game
 from Map import Map
 from monsters.Monster import MonsterResistances
-from utils import DamageType
+from utils import DamageType,get_screen_size
+
 pygame.init()
 a = 0
-screen = pygame.display.set_mode((1800, 600))
+screen = pygame.display.set_mode(get_screen_size())
 
 monsterresistances = MonsterResistances(0,0,0,0)
 
 map = Map('Map_TW.png','route')
 
-monster = Monster(1,map.route[0],10,'monsters/assets/monster.png',monsterresistances)
+monster = Monster(5,map.route[0],10,'monsters/assets/monster.png',monsterresistances)
 
 tower = Tower(1,DamageType.EARTH, 2,500,400)
 

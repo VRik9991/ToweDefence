@@ -1,14 +1,10 @@
 import pygame
 import ctypes
-
+from utils import get_screen_size
 
 class Map:
     def __init__(self, image_path, route_path):
-        self.user32 = ctypes.windll.user32
-        self.user32.SetProcessDPIAware()
-        self.x_length_of_screen = self.user32.GetSystemMetrics(76)
-        self.y_length_of_screen = self.user32.GetSystemMetrics(77)
-        self.map_size = (self.x_length_of_screen, self.y_length_of_screen)
+        self.map_size = get_screen_size()
         self.route = []
         dots = open(route_path, 'r').readlines()
         for i in range(len(dots)):

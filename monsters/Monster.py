@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 import pygame
+import math
 
 
 @dataclass
@@ -9,6 +10,7 @@ class MonsterResistances:
     ground: float
     fire: float
     water: float
+
 
 class Monster:
     def __init__(self, speed, spawn, hp, image, resistances: MonsterResistances):
@@ -24,13 +26,23 @@ class Monster:
 
     def move(self, coordinates):
         if self.live:
-            cos = coordinates[0] / coordinates[1]
-            sin = coordinates[1] / coordinates[0]
-            lx = self.speed * cos
-            ly = self.speed * sin
-            self.rect.x += lx
-            self.rect.y += ly
+
+            dx = coordinates[0] - self.rect.x
+            dy = coordinates[1] - self.rect.y
+            distance = math.hypot(dx, dy)
+
+            if distance > self.speed:
+
+                self.rect.x += self.speed * (dx / distance)
+                self.rect.y += self.speed * (dy / distance)
+            else:
+
+                self.rect.x = coordinates[0]
+                self.rect.y = coordinates[1]
+                self.counter += 1
+
             if self.health <= 0:
-                live = False
+                self.live = False
+
     def display(self, screen):
         screen.blit(pygame.image.load(self.image), self.rect)
