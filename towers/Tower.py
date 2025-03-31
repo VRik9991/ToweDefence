@@ -1,11 +1,13 @@
 import pygame
 import math
+import time
 
 from towers.Projectile import Projectile
 from utils import DamageType
 
+
 class Tower:
-    def __init__(self, attack_speed: float, damage_type: DamageType, damage: int,x,y):
+    def __init__(self, attack_speed: float, damage_type: DamageType, damage: int, x, y):
         self.attack_speed = attack_speed
         self.damage_type: DamageType = damage_type
         self.attack_damage = damage
@@ -26,9 +28,9 @@ class Tower:
     def attack(self, monsters):
         count = []
         for monster in monsters:
-            count.append(math.hypot(abs(monster.rect.x - self.rect.x),abs(monster.rect.y - self.rect.y)))
+            count.append(math.hypot(abs(monster.rect.x - self.rect.x), abs(monster.rect.y - self.rect.y)))
         count_smallest = count.index(min(count))
-        self.projectiles.append(Projectile(*self.rect.center,monsters[count_smallest],4,1))
+        self.projectiles.append(Projectile(self.rect.centerx, self.rect.centery, monsters[count_smallest], 2, 4))
         self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
         for projectile in self.projectiles:
             projectile.move()

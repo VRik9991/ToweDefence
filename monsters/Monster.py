@@ -21,7 +21,7 @@ class Monster:
         self.resistances = resistances
         self.image = image
         self.rect = pygame.Rect(self.x, self.y, 10, 10)
-        self.health = hp
+        self.hp = hp
         self.counter = 0
 
     def move(self, coordinates):
@@ -41,7 +41,7 @@ class Monster:
                 self.rect.y = coordinates[1]
                 self.counter += 1
 
-            if self.health <= 0:
+            if self.hp <= 0:
                 self.live = False
 
     def display(self, screen):
