@@ -23,9 +23,10 @@ class MonsterManager:
                     one_wave_monsters.append(monster_mapping[opener[i].split(" x")[0]](spawn_point))
                 self.monsters_waves.append(one_wave_monsters)
 
-    def activist_of_all(self, screen):
+    def activist_of_all(self, screen, kuda_move):
         for i in range(len(self.monsters_waves)):
             for g in range(len(self.monsters_waves[i])):
+                self.monsters_waves[i][g].move(kuda_move)
                 self.monsters_waves[i][g].display(screen)
     def killer(self):
         for i in range(len(self.monsters_waves)):
