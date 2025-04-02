@@ -1,27 +1,23 @@
-from dataclasses import dataclass
-
-import pygame
 import math
 
+import pygame
 
-@dataclass
-class MonsterResistances:
-    air: float
-    ground: float
-    fire: float
-    water: float
+from utils import DamageType
 
 
 class Monster:
-    def __init__(self, speed, spawn, hp, image, resistances: MonsterResistances):
-        self.x = spawn[0]
-        self.y = spawn[1]
-        self.speed = speed
+    def __init__(self, spawn):
+        self.speed = 3
         self.is_alive = True
-        self.resistances = resistances
-        self.image = image
-        self.rect = pygame.Rect(self.x, self.y, 10, 10)
-        self.hp = hp
+        self.resistances = {
+            DamageType.EARTH: 0,
+            DamageType.WATER: 0,
+            DamageType.AIR: 0,
+            DamageType.FIRE: 0
+        }
+        self.image = pygame.image.load('monsters/assets/monster.png')
+        self.rect = self.image.get_rect(center=spawn)
+        self.hp = 10
         self.counter = 0
 
     def move(self, coordinates):
@@ -43,4 +39,4 @@ class Monster:
             self.is_alive = False
 
     def display(self, screen):
-        screen.blit(pygame.image.load(self.image), self.rect)
+        screen.blit(self.image, self.rect)

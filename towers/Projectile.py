@@ -15,7 +15,6 @@ class Projectile:
         screen.blit(self.image, self.rect)
 
     def move(self):
-        print(self.target)
         if not self.hit:
             coordinates = self.target.rect.center
             dx = coordinates[0] - self.rect.x
