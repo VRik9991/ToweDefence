@@ -7,8 +7,7 @@ class Game:
     def display(self, screen):
         self.map.display(screen)
         for monster in self.monsters:
-            if monster.live == True:
-                monster.display(screen)
+            monster.display(screen)
         for tower in self.towers:
             tower.display(screen)
 
@@ -17,3 +16,4 @@ class Game:
             tower.attack(self.monsters)
         for monster in self.monsters:
             monster.move(self.map.route[monster.counter])
+        self.monsters = [monster for monster in self.monsters if monster.is_alive]

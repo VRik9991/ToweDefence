@@ -15,6 +15,7 @@ class Projectile:
         screen.blit(self.image, self.rect)
 
     def move(self):
+        print(self.target)
         if not self.hit:
             coordinates = self.target.rect.center
             dx = coordinates[0] - self.rect.x
@@ -25,7 +26,9 @@ class Projectile:
 
                 self.rect.x += self.speed * (dx / distance)
                 self.rect.y += self.speed * (dy / distance)
-
+            else:
+                self.hit = True
+                self.target.hp -= self.damage
             if self.rect.colliderect(self.target.rect):
                 self.hit = True
                 self.target.hp -= self.damage

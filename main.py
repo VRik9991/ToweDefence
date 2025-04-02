@@ -14,7 +14,7 @@ map = Map('Map_TW.png','route')
 
 monster = Monster(3,map.route[0],10,'monsters/assets/monster.png',monsterresistances)
 
-tower = Tower(1,DamageType.EARTH, 2,500,400)
+tower = Tower(DamageType.EARTH, 2,500,400)
 
 towers = [tower]
 monsters = [monster]

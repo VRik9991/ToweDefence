@@ -7,8 +7,7 @@ from utils import DamageType
 
 
 class Tower:
-    def __init__(self, attack_speed: float, damage_type: DamageType, damage: int, x, y):
-        self.attack_speed = attack_speed
+    def __init__(self, damage_type: DamageType, damage: int, x, y):
         self.damage_type: DamageType = damage_type
         self.attack_damage = damage
         self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
@@ -29,8 +28,9 @@ class Tower:
         count = []
         for monster in monsters:
             count.append(math.hypot(abs(monster.rect.x - self.rect.x), abs(monster.rect.y - self.rect.y)))
-        count_smallest = count.index(min(count))
-        self.projectiles.append(Projectile(self.rect.centerx, self.rect.centery, monsters[count_smallest], 2, 4))
+        if monsters:
+            count_smallest = count.index(min(count))
+            self.projectiles.append(Projectile(self.rect.centerx, self.rect.centery, monsters[count_smallest], 2, 4))
         self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
         for projectile in self.projectiles:
             projectile.move()
