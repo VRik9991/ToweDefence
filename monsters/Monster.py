@@ -35,6 +35,9 @@ class Monster:
             self.rect.y = coordinates[1]
             self.counter += 1
 
+        if self.counter == 6:
+            self.is_alive = False
+
         if self.hp <= 0:
             self.is_alive = False
 

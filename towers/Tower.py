@@ -8,9 +8,9 @@ from utils import DamageType
 class Tower:
     def __init__(self, spawn: tuple[int, int]):
         self.damage_type: DamageType.EARTH
-        self.attack_damage = 2
+        self.attack_damage = 1
         self.projectile_speed = 4
-        self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
+        self.image = pygame.image.load("towers/assets/tower_assets/tower.png")
         self.rect = self.image.get_rect(center=spawn)
         self.range = 300
         self.cooldown = 0.2

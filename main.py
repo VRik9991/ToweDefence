@@ -8,7 +8,7 @@ from utils import get_screen_size
 pygame.init()
 screen = pygame.display.set_mode(get_screen_size())
 
-map = Map('Map_TW.png','route')
+map = Map('map.png', 'route')
 
 monster = Monster(map.route[0])
 

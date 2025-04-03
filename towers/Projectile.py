@@ -22,12 +22,12 @@ class Projectile:
             distance = math.hypot(dx, dy)
 
             if distance > self.speed:
-
                 self.rect.x += self.speed * (dx / distance)
                 self.rect.y += self.speed * (dy / distance)
             else:
                 self.hit = True
                 self.target.hp -= self.damage
+
             if self.rect.colliderect(self.target.rect):
                 self.hit = True
                 self.target.hp -= self.damage
