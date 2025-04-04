@@ -1,4 +1,6 @@
+import pygame
 import math
+import time
 
 import pygame
 from pygame.rect import Rect
