@@ -5,7 +5,7 @@ from towers.Projectile import *
 import time
 
 class Tower:
-    def __init__(self, attack_speed: float, damage_type: DamageType, demage: int):
+    def __init__(self, damage_type: DamageType, demage: int):
         self.damage_type: DamageType = damage_type
         self.attack_damage = demage
         self.rect = pygame.Rect(100,250,10,10)
@@ -31,11 +31,12 @@ class Tower:
                     (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2))
             if count:
                 nearest_position = count.index(min(count))
+                nearest_monster = count[count.index(min(count))]
                 # nearest_monster = min(monsters, key=lambda monster: (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2)))
 
-                if nearest_position <= self.range:
-                    self.projectiles.append(Projectile(*self.rect.center, monsters[nearest_position],10,50))
-                self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
+                if nearest_monster <= self.range:
+                    self.projectiles.append(Projectile(*self.rect.center, monsters[int(nearest_position)],10,50))
+            self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
             for projectile in self.projectiles:
                 projectile.move()
             self.curect_time = time.time()
