@@ -11,9 +11,9 @@ import time
 
 
 class Tower:
-    def __init__(self, damage_type: DamageType, demage: int):
+    def __init__(self, damage_type: DamageType):
         self.damage_type: DamageType = damage_type
-        self.attack_damage = demage
+        self.attack_damage = 2
         self.rect = Rect(100, 250, 10, 10)
         self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
         self.range = 500
