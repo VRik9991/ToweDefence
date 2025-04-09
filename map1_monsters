@@ -1,0 +1,7 @@
+delay 0.5
+Monster x10
+wave_delay 10
+
+delay 0.3
+Monster x15
+wave_delay 10

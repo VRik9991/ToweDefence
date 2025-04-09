@@ -6,7 +6,7 @@ from utils import DamageType
 
 
 class Monster:
-    def __init__(self, spawn):
+    def __init__(self, spawn, money_callback):
         self.speed = 3
         self.is_alive = True
         self.resistances = {
@@ -19,6 +19,8 @@ class Monster:
         self.rect = self.image.get_rect(center=spawn)
         self.hp = 10
         self.counter = 0
+        self.cost = 1
+        self.money_callback = money_callback
 
     def move(self, coordinates):
         dx = coordinates[0] - self.rect.x
@@ -37,6 +39,7 @@ class Monster:
 
         if self.hp <= 0:
             self.is_alive = False
+            self.money_callback(self.cost)
 
     def display(self, screen):
         screen.blit(self.image, self.rect)
