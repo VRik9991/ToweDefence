@@ -59,17 +59,3 @@ class MonsterManager:
 
     def killer(self):
         self.monsters_on_screen = [monster for monster in self.monsters_on_screen if monster.is_alive]
-
-
-# MonsterManager('map1_monsters', (0, 0))
-# '''add = lambda x, y: x + y
-# sub = lambda x, y: x - y
-# actions = {
-#     'add': add,
-#     'sub': sub
-# }
-# a = 15
-# b = 7
-# for i in range(10):
-#     a = actions['add'](a, b)
-#     print(a)'''

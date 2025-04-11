@@ -3,7 +3,7 @@ from MonsterManager import MonsterManager
 
 class Game:
     def __init__(self, towers, map_object, screen):
-        self.monster_manager = MonsterManager('map1_monsters', map_object.route[0], screen, self.money_callback)
+        self.monster_manager = MonsterManager('map1_route', map_object.route[0], screen, self.money_callback)
         self.towers = towers
         self.map = map_object
         self.money = 0
