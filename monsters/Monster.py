@@ -1,5 +1,5 @@
 import math
-
+import random
 import pygame
 
 from utils import DamageType
@@ -7,7 +7,9 @@ from utils import DamageType
 
 class Monster:
     def __init__(self, spawn):
-        self.speed = 3
+        self.speed = 1
+        self.hp = 10000
+        self.counter = 0
         self.is_alive = True
         self.resistances = {
             DamageType.EARTH: 0,
@@ -15,15 +17,20 @@ class Monster:
             DamageType.AIR: 0,
             DamageType.FIRE: 0
         }
-        self.image = pygame.image.load('monsters/assets/monster.png')
-        self.rect = self.image.get_rect(center=spawn)
-        self.hp = 10
-        self.counter = 0
-
+        self.nunber_of_image = random.randint(0, 1)
+        self.regulator_images = 0
+        self.images = [pygame.image.load("monsters\monster_types\monster.png"),
+                      pygame.image.load('monsters\monster_types\monster2.png')
+                      ]
+        self.image = pygame.image.load('monsters\monster_types\monster.png')
+        self.images_counter = 0
+        self.spawn = spawn
+        self.rect = self.image.get_rect(center=self.spawn)
     def move(self, coordinates):
         dx = coordinates[0] - self.rect.x
         dy = coordinates[1] - self.rect.y
         distance = math.hypot(dx, dy)
+
 
         if distance > self.speed:
 
@@ -34,9 +41,13 @@ class Monster:
             self.rect.x = coordinates[0]
             self.rect.y = coordinates[1]
             self.counter += 1
-
         if self.hp <= 0:
             self.is_alive = False
 
     def display(self, screen):
-        screen.blit(self.image, self.rect)
+        self.regulator_images += 0.1
+        screen.blit(self.images[self.nunber_of_image], self.rect)
+        if self.regulator_images >= 2:
+            self.nunber_of_image = random.randint(0, 1)
+            screen.blit(self.images[self.nunber_of_image], self.rect)
+            self.regulator_images = 0
