@@ -1,7 +1,5 @@
 import pygame
 import math
-import time
-
 import pygame
 from pygame.rect import Rect
 
@@ -11,11 +9,12 @@ import time
 
 
 class Tower:
+    image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
+    price = 10
     def __init__(self, damage_type: DamageType):
         self.damage_type: DamageType = damage_type
         self.attack_damage = 2
         self.rect = Rect(100, 250, 10, 10)
-        self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
         self.range = 500
         self.cooldown = 0.2
         self.projectiles = []
