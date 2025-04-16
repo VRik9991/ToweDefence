@@ -4,17 +4,16 @@ from Game import Game
 from Map import Map
 from utils import get_screen_size
 
-
 pygame.init()
 screen = pygame.display.set_mode(get_screen_size())
 
-map = Map('Map_TW.png','route')
+map = Map('Map_TW.png', 'route')
 
-tower = Tower((500,400))
+tower = Tower()
 
 towers = [tower]
 
-game = Game(towers,map, screen)
+game = Game(towers, map, screen)
 
 running = True
 while running:
@@ -26,6 +25,6 @@ while running:
             running = False
 
     game.display(screen)
-    game.run()
+    running = game.run()
 
     pygame.display.flip()
