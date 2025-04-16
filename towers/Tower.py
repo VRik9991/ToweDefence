@@ -11,8 +11,8 @@ import time
 
 
 class Tower:
-    def __init__(self, damage_type: DamageType):
-        self.damage_type: DamageType = damage_type
+    def __init__(self):
+        self.damage_type = DamageType
         self.attack_damage = 2
         self.rect = Rect(100, 250, 10, 10)
         self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
@@ -35,7 +35,7 @@ class Tower:
             for monster in monsters:
                 count.append(math.sqrt(
                     (monster.rect.center[0] - self.rect.center[0]) ** 2 + (
-                                monster.rect.center[1] - self.rect.center[1]) ** 2))
+                            monster.rect.center[1] - self.rect.center[1]) ** 2))
             if count:
                 nearest_position = count.index(min(count))
                 nearest_monster = count[count.index(min(count))]

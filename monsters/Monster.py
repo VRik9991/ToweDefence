@@ -6,7 +6,7 @@ from utils import DamageType
 
 
 class Monster:
-    def __init__(self, spawn, money_callback,damage_callback):
+    def __init__(self, spawn, money_callback, damage_callback):
         self.speed = 3
         self.is_alive = True
         self.resistances = {
@@ -24,7 +24,7 @@ class Monster:
         self.damage = 1
         self.damage_callback = damage_callback
 
-    def move(self,coordinates):
+    def move(self, coordinates):
         dx = coordinates[0] - self.rect.x
         dy = coordinates[1] - self.rect.y
         distance = math.hypot(dx, dy)

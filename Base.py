@@ -1,7 +1,8 @@
 import pygame
 
+
 class Base:
-    def __init__(self,dot):
+    def __init__(self, dot):
         self.health = 100
         self.living = True
         self.image = pygame.image.load('bases/base1.png')
@@ -10,9 +11,8 @@ class Base:
     def display(self, screen):
         screen.blit(self.image, self.rect)
 
-    def get_damage(self,damage):
+    def get_damage(self, damage):
         self.health -= damage
-        print(self.health)
         if self.health <= 0:
             self.living = False
 

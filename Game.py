@@ -1,10 +1,17 @@
 from MonsterManager import MonsterManager
 from Base import Base
 
+
 class Game:
     def __init__(self, towers, map_object, screen):
         self.base = Base(map_object.route[5])
-        self.monster_manager = MonsterManager('map1_route', map_object.route[0], screen, self.money_callback, self.base.get_damage)
+        self.monster_manager = MonsterManager(
+            'map1_route',
+            map_object.route[0],
+            screen,
+            self.money_callback,
+            self.base.get_damage
+        )
         self.towers = towers
         self.map = map_object
         self.money = 0
