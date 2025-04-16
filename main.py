@@ -26,6 +26,6 @@ while running:
             running = False
 
     game.display(screen)
-    game.run()
+    running = game.run()
 
     pygame.display.flip()
