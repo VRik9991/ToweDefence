@@ -17,7 +17,7 @@ class Base:
             self.living = False
 
     def image_change(self):
-        if self.health >> 50:
+        if self.health > 50:
             self.image = pygame.image.load('bases/base1.png')
         if self.health <= 50 and self.health >> 0:
             self.image = pygame.image.load('bases/base2.png')
