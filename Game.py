@@ -10,7 +10,6 @@ class Game:
         self.towers = towers
         self.map = map_object
         self.money = 0
-        self.user = 0
         self.healthbar = Healthbar()
 
     def money_callback(self, money_amount):
