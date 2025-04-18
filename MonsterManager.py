@@ -1,7 +1,4 @@
-
-from Map import Map
 import time
-
 from monsters.Monster import Monster
 
 
