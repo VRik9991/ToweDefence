@@ -17,7 +17,7 @@ class Monster:
         }
         self.image = pygame.image.load('monsters/assets/monster.png')
         self.rect = self.image.get_rect(center=spawn)
-        self.hp = 10
+        self.hp = 100
         self.counter = 0
 
     def move(self, coordinates):

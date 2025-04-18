@@ -11,7 +11,7 @@ map = Map('Map_TW.png','route')
 
 monster = Monster(map.route[0])
 
-tower = Tower((500,400))
+tower = Tower(500,400,DamageType.WATER)
 
 towers = [tower]
 monsters = [monster]
@@ -26,8 +26,12 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.MOUSEBUTTONDOWN :
+            if pygame.mouse.get_pressed()[0]:
+                game.tower_placement(Tower)
 
     game.display(screen)
     game.run()
 
     pygame.display.flip()
+
