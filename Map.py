@@ -2,6 +2,7 @@ import pygame
 import ctypes
 from utils import get_screen_size
 
+
 class Map:
     def __init__(self, image_path, route_path):
         self.map_size = get_screen_size()

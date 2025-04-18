@@ -1,10 +1,9 @@
 import time
-
 from monsters.Monster import Monster
 
 
 class MonsterManager:
-    def __init__(self, wave_path, spawn_point, screen, money_callback):
+    def __init__(self, wave_path, spawn_point, screen, money_callback,damage_callback):
         self.monster_mapping = {
             'Monster': Monster}
         self.screen = screen
@@ -24,7 +23,7 @@ class MonsterManager:
                 one_wave_monsters = []
                 for g in range(int(opener[i].split(" x")[1].strip())):
                     one_wave_monsters.append(
-                        self.monster_mapping[opener[i].split(" x")[0]](spawn_point, money_callback))
+                        self.monster_mapping[opener[i].split(" x")[0]](spawn_point, money_callback, damage_callback))
                 self.monsters_waves.append(one_wave_monsters)
         self.delay_now = self.delays_between_monsters[0]
 
