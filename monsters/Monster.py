@@ -1,14 +1,15 @@
 import math
-
 import pygame
-
 from utils import DamageType
 
 
 class Monster:
     def __init__(self, spawn, money_callback, damage_callback):
-        self.speed = 3
+        self.max_hp = 10
+        self.current_hp = 10
         self.is_alive = True
+        self.damaged = False
+        self.speed = 3
         self.resistances = {
             DamageType.EARTH: 0,
             DamageType.WATER: 0,
@@ -17,7 +18,6 @@ class Monster:
         }
         self.image = pygame.image.load('monsters/assets/monster.png')
         self.rect = self.image.get_rect(center=spawn)
-        self.hp = 10
         self.counter = 0
         self.cost = 1
         self.money_callback = money_callback
@@ -39,7 +39,7 @@ class Monster:
             self.rect.y = coordinates[1]
             self.counter += 1
 
-        if self.hp <= 0 or self.counter == 6:
+        if self.current_hp <= 0 or self.counter == 6:
             self.die()
 
     def display(self, screen):

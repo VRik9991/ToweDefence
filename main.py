@@ -4,6 +4,7 @@ from Game import Game
 from Map import Map
 from utils import get_screen_size
 
+
 pygame.init()
 screen = pygame.display.set_mode(get_screen_size())
 

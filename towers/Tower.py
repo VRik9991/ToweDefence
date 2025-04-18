@@ -1,10 +1,6 @@
-import pygame
 import math
-import time
-
 import pygame
 from pygame.rect import Rect
-
 from utils import DamageType
 from towers.Projectile import Projectile
 import time
@@ -20,6 +16,7 @@ class Tower:
         self.cooldown = 0.2
         self.projectiles = []
         self.current_time = time.time()
+        self.projectile_speed = 50
 
     def display(self, screen):
         screen.blit(self.image, self.rect)
@@ -42,7 +39,7 @@ class Tower:
                 # nearest_monster = min(monsters, key=lambda monster: (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2)))
 
                 if nearest_monster <= self.range:
-                    self.projectiles.append(Projectile(*self.rect.center, monsters[int(nearest_position)], 10, 50))
+                    self.projectiles.append(Projectile(self.rect.centerx, self.rect.centery, monsters[int(nearest_position)],self.attack_damage, self.projectile_speed))
             self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
             self.current_time = time.time()
         for projectile in self.projectiles:

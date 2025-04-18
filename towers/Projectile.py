@@ -27,7 +27,5 @@ class Projectile:
                 self.rect.y += self.speed * (dy / distance)
             else:
                 self.hit = True
-                self.target.hp -= self.damage
-            if self.rect.colliderect(self.target.rect):
-                self.hit = True
-                self.target.hp -= self.damage
+                self.target.current_hp -= self.damage
+                self.target.damaged = True
