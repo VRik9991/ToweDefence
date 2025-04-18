@@ -22,7 +22,6 @@ class Projectile:
             distance = math.hypot(dx, dy)
 
             if distance > self.speed:
-
                 self.rect.x += self.speed * (dx / distance)
                 self.rect.y += self.speed * (dy / distance)
             else:
