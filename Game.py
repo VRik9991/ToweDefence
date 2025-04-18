@@ -27,7 +27,7 @@ class Game:
         self.base.display(screen)
         self.monster_manager.display_all_spawned_monsters()
         for monster in self.monster_manager.monsters_on_screen:
-            self.healthbar.healthbar_run(screen, self.base and monster)
+            self.healthbar.healthbar_run(screen, monster)
         for tower in self.towers:
             tower.display(screen)
 
