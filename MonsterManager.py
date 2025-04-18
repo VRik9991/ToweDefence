@@ -3,7 +3,7 @@ from monsters.Monster import Monster
 
 
 class MonsterManager:
-    def __init__(self, wave_path, spawn_point, screen, money_callback,damage_callback):
+    def __init__(self, wave_path, spawn_point, screen, money_callback, damage_callback):
         self.monster_mapping = {
             'Monster': Monster}
         self.screen = screen
@@ -16,7 +16,7 @@ class MonsterManager:
             opener = file.readlines()
         for i in range(len(opener)):
             if "wave_delay " in opener[i]:
-                self.delays_between_waves.append(float(opener[i].split(" ")[1].strip()))
+                self.delays_between_waves.append(int(float(opener[i].split(" ")[1].strip())))
             elif "delay " in opener[i]:
                 self.delays_between_monsters.append(float(opener[i].split(" ")[1].strip()))
             elif opener[i] != "\n":
@@ -41,10 +41,10 @@ class MonsterManager:
                     self.delays_between_monsters.pop(0)
                     self.delay_now = self.delays_between_waves[0]
                     self.delays_between_waves.pop(0)
+
     def run(self):
         self.should_spawn()
         self.killer()
-
 
     def move_all_spawned_monsters(self, route):
         for monster in self.monsters_on_screen:

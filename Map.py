@@ -1,5 +1,4 @@
 import pygame
-import ctypes
 from utils import get_screen_size
 
 
@@ -9,9 +8,9 @@ class Map:
         self.route = []
         dots = open(route_path, 'r').readlines()
         for i in range(len(dots)):
-            route_halfpart = (dots[i].split(' '))
-            route_part = ((int(route_halfpart[0]) * self.map_size[0]) / 1920), (
-                    (int(route_halfpart[1]) * self.map_size[1]) / 1080)
+            route_half_part = (dots[i].split(' '))
+            route_part = ((int(route_half_part[0]) * self.map_size[0]) / 1920), (
+                    (int(route_half_part[1]) * self.map_size[1]) / 1080)
             self.route.append(route_part)
 
         self.rect = pygame.Rect(0, 0, 0, 0)
