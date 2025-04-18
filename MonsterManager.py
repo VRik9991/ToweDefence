@@ -10,7 +10,7 @@ class MonsterManager:
         self.time_before = time.time()
         self.delays_between_monsters = []
         self.monsters_waves = []
-        self.delays_between_waves = [1]
+        self.delays_between_waves = []
         self.monsters_on_screen = []
         with open(wave_path, "r") as file:
             opener = file.readlines()
