@@ -26,14 +26,14 @@ class Game:
         self.monsters = [monster for monster in self.monsters if monster.is_alive]
 
     def tower_placement(self, item):
-        isitcolide = 0
+        is_it_collide = 0
         coordinates = pygame.mouse.get_pos()
         for place in self.map.placement_space:
             if place.collidepoint(coordinates):
                 for tower in self.towers:
                     if item(coordinates[0],coordinates[1],DamageType.EARTH).rect.colliderect(tower.rect):
-                        isitcolide +=1
-                if isitcolide == 0:
+                        is_it_collide +=1
+                if is_it_collide == 0:
                     self.towers.append(item(coordinates[0],coordinates[1],DamageType.EARTH))
 
 
