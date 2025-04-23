@@ -13,7 +13,7 @@ import time
 class Tower:
     def __init__(self,x,y, damage_type: DamageType):
         self.damage_type: DamageType = damage_type
-        self.attack_damage = 200000000000000000000000000000000000
+        self.attack_damage = 2
         self.rect = Rect(x, y, 10, 10)
         self.image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
         self.range = 500
