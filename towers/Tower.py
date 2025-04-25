@@ -12,7 +12,7 @@ class Tower:
     def __init__(self, x,y, damage_type: DamageType):
         self.damage_type: DamageType = damage_type
         self.attack_damage = 2
-        self.rect = Rect(x,y,0, 10, 10)
+        self.rect = Rect(x,y, 10, 10)
         
         self.range = 500
         self.cooldown = 0.2
