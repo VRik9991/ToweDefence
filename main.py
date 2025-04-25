@@ -5,7 +5,9 @@ from ButtonManager import click_checker
 pygame.init()
 screen = pygame.display.set_mode(get_screen_size())
 
+
 game = Game(screen)
+
 
 running = True
 while running:
@@ -17,7 +19,11 @@ while running:
                 click_checker(game.menu.buttons, pygame.mouse.get_pos())
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.MOUSEBUTTONDOWN :
+            if pygame.mouse.get_pressed()[0]:
+                game.tower_placement(Tower)
 
     game.run()
 
     pygame.display.flip()
+

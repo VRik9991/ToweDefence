@@ -38,8 +38,10 @@ class Tower:
                 # nearest_monster = min(monsters, key=lambda monster: (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2)))
 
                 if nearest_monster <= self.range:
+
                     self.projectiles.append(
                         Projectile(self.rect.centerx, self.rect.centery, monsters[int(nearest_position)], self.projectile_speed))
+
             self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
             self.current_time = time.time()
         for projectile in self.projectiles:
