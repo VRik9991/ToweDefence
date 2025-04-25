@@ -18,6 +18,9 @@ class Monster:
         }
         self.image = pygame.image.load('monsters/assets/monster.png')
         self.rect = self.image.get_rect(center=spawn)
+
+        self.hp = 100
+
         self.counter = 0
         self.cost = 1
         self.money_callback = money_callback

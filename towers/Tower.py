@@ -9,10 +9,11 @@ import time
 class Tower:
     image = pygame.image.load("towers/assets/tower_assets/small_tower.png")
     price = 10
-    def __init__(self):
-        self.damage_type = DamageType
+    def __init__(self, x,y, damage_type: DamageType):
+        self.damage_type: DamageType = damage_type
         self.attack_damage = 2
-        self.rect = Rect(100, 250, 10, 10)
+        self.rect = Rect(x,y,0, 10, 10)
+        
         self.range = 500
         self.cooldown = 0.2
         self.projectiles = []
@@ -38,8 +39,10 @@ class Tower:
                 # nearest_monster = min(monsters, key=lambda monster: (monster.rect.center[0] - self.rect.center[0]) ** 2 + (monster.rect.center[1] - self.rect.center[1]) ** 2)))
 
                 if nearest_monster <= self.range:
+
                     self.projectiles.append(
                         Projectile(self.rect.centerx, self.rect.centery, monsters[int(nearest_position)],self.attack_damage, self.projectile_speed))
+
             self.projectiles = [projectile for projectile in self.projectiles if not projectile.hit]
             self.current_time = time.time()
         for projectile in self.projectiles:
