@@ -39,7 +39,7 @@ class Game:
         self.gold.display(self.money, self.screen)
         self.menu.display(self.screen)
 
-    def go(self):
+    def process_workflow(self):
         self.monster_manager.run()
         for tower in self.towers:
             tower.attack(self.monster_manager.monsters_on_screen)
