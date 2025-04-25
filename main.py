@@ -1,20 +1,11 @@
 import pygame
-from towers.Tower import Tower
 from Game import Game
-from Map import Map
 from utils import get_screen_size
 from ButtonManager import click_checker
-
 pygame.init()
 screen = pygame.display.set_mode(get_screen_size())
 
-map = Map('Map_TW.png', 'route')
-
-tower = Tower()
-
-towers = [tower]
-
-game = Game(towers, map, screen)
+game = Game(screen)
 
 running = True
 while running:
@@ -27,7 +18,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    game.display(screen)
     game.run()
 
     pygame.display.flip()

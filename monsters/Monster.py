@@ -46,7 +46,8 @@ class Monster:
         screen.blit(self.image, self.rect)
 
     def die(self):
+        self.is_alive = False
         if self.counter == 6:
             self.damage_callback(self.damage)
-        self.is_alive = False
-        self.money_callback(self.cost)
+        else:
+            self.money_callback(self.cost)
