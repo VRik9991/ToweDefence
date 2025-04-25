@@ -2,7 +2,7 @@ import pygame
 from towers.Tower import Tower
 from Game import Game
 from Map import Map
-from utils import get_screen_size
+from utils import get_screen_size, DamageType
 from ButtonManager import click_checker
 
 pygame.init()
@@ -30,7 +30,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN :
             if pygame.mouse.get_pressed()[0]:
-                game.tower_placement(Tower)
+                game.tower_placement(game.menu.chosen_tower)
 
     game.display(screen)
     game.run()

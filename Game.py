@@ -43,27 +43,28 @@ class Game:
     def run(self):
         self.monster_manager.run()
         for tower in self.towers:
-            tower.attack(self.monsters)
+            # tower.attack(self.monsters)
             tower.attack(self.monster_manager.monsters_on_screen)
-        for monster in self.monsters:
-            monster.move(self.map.route[monster.counter])
+        # for monster in self.monsters:
+        #     monster.move(self.map.route[monster.counter])
                     
         self.monster_manager.move_all_spawned_monsters(self.map.route)
-        self.monsters = [monster for monster in self.monsters if monster.is_alive]
+        # self.monsters = [monster for monster in self.monsters if monster.is_alive]
 
         self.base.image_change()
         if not self.base.is_alive:
             return False
 
     def tower_placement(self, item):
-        is_it_collide = 0
-        coordinates = pygame.mouse.get_pos()
-        for place in self.map.placement_space:
-            if place.collidepoint(coordinates):
-                for tower in self.towers:
-                    if item(coordinates[0],coordinates[1],DamageType.EARTH).rect.colliderect(tower.rect):
-                        is_it_collide +=1
-                if is_it_collide == 0:
-                    self.towers.append(item(coordinates[0],coordinates[1],DamageType.EARTH))
+        if item != None:
+            is_it_collide = 0
+            coordinates = pygame.mouse.get_pos()
+            for place in self.map.placement_space:
+                if place.collidepoint(coordinates):
+                    for tower in self.towers:
+                        if item(coordinates[0],coordinates[1],DamageType.EARTH).rect.colliderect(tower.rect):
+                            is_it_collide +=1
+                    if is_it_collide == 0:
+                        self.towers.append(item(coordinates[0],coordinates[1],DamageType.EARTH))
 
 
