@@ -7,10 +7,10 @@ import time
 
 
 class Tower:
-    image = pygame.image.load("towers/assets/tower_assets/tower.png")
-    price = 10
     def __init__(self):
         self.damage_type = DamageType
+        self.price = 10
+        self.image = pygame.image.load("towers/assets/tower_assets/tower.png")
         self.attack_damage = 2
         self.rect = self.image.get_rect(center=(100, 250))
         self.range = 500
