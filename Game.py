@@ -55,7 +55,7 @@ class Game:
         self.base.image_change()
 
     def run(self):
-        self.go()
+        self.process_workflow()
         self.display()
 
     def tower_placement(self, item):
