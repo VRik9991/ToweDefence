@@ -1,4 +1,3 @@
-
 import pygame
 from utils import DamageType
 from MonsterManager import MonsterManager
@@ -9,18 +8,20 @@ from TowerMenu import TowerMenu
 from towers.Tower import Tower
 from Base import Base
 from Healthbar import Healthbar
+from Map import Map
 
 
 class Game:
-    def __init__(self, towers, map_object, screen):
-        self.base = Base(map_object.route[5])
-        self.monster_manager = MonsterManager('map1_route', map_object.route[0], screen, self.money_callback, self.base.get_damage)
-        self.towers = towers
-        self.map = map_object
+    def __init__(self, screen):
+        self.screen = screen
+        self.map = Map('Map_TW.png', 'route')
+        self.tower = Tower()
+        self.towers = [self.tower]
+        self.base = Base(self.map.route[5])
+        self.monster_manager = MonsterManager('map1_route', self.map.route[0], self.screen, self.money_callback, self.base.get_damage, self.map.route)
         self.money = 0
         self.gold = Golda()
-        self.screen = screen
-        self.menu = TowerMenu([TowersButton(Tower.image, Tower.price, (80, 80), Tower.__name__, self.tower_button_callback), TowersButton(Tower.image, Tower.price, (80, 80), Tower.__name__, self.tower_button_callback)], [10, get_screen_size()[1] - 10 - 120, 510, 120])
+        self.menu = TowerMenu([TowersButton(self.tower.image, self.tower.price, (80, 80), Tower.__name__, self.tower_button_callback), TowersButton(self.tower.image, self.tower.price, (80, 80), Tower.__name__, self.tower_button_callback)], [10, get_screen_size()[1] - 10 - 120, 510, 120])
         self.healthbar = Healthbar()
 
     def money_callback(self, money_amount):
@@ -29,31 +30,27 @@ class Game:
     def tower_button_callback(self, tower_name):
         self.menu.chosen_tower = tower_name
 
-    def display(self, screen):
-        self.map.display(screen)
-        self.base.display(screen)
+    def display(self):
+        self.map.display(self.screen)
+        self.base.display(self.screen)
         self.monster_manager.display_all_spawned_monsters()
-        for monster in self.monster_manager.monsters_on_screen:
-            self.healthbar.healthbar_run(screen, monster)
         for tower in self.towers:
-            tower.display(screen)
-        self.gold.display(self.money, screen)
-        self.menu.display(screen)
+            tower.display(self.screen)
+        for monster in self.monster_manager.monsters_on_screen:
+            self.healthbar.healthbar_run(self.screen, monster)
+        self.gold.display(self.money, self.screen)
+        self.menu.display(self.screen)
 
-    def run(self):
+    def process_workflow(self):
         self.monster_manager.run()
         for tower in self.towers:
-            tower.attack(self.monsters)
             tower.attack(self.monster_manager.monsters_on_screen)
-        for monster in self.monsters:
-            monster.move(self.map.route[monster.counter])
-                    
-        self.monster_manager.move_all_spawned_monsters(self.map.route)
-        self.monsters = [monster for monster in self.monsters if monster.is_alive]
-
+        self.monster_manager.move_all_spawned_monsters()
         self.base.image_change()
-        if not self.base.is_alive:
-            return False
+
+    def run(self):
+        self.process_workflow()
+        self.display()
 
     def tower_placement(self, item):
         is_it_collide = 0
@@ -65,5 +62,3 @@ class Game:
                         is_it_collide +=1
                 if is_it_collide == 0:
                     self.towers.append(item(coordinates[0],coordinates[1],DamageType.EARTH))
-
-
