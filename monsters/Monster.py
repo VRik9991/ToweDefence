@@ -4,7 +4,7 @@ from utils import DamageType
 
 
 class Monster:
-    def __init__(self, spawn, money_callback, damage_callback):
+    def __init__(self, spawn, money_callback, damage_callback, coordinates):
         self.max_hp = 10
         self.current_hp = 10
         self.is_alive = True
@@ -26,10 +26,11 @@ class Monster:
         self.money_callback = money_callback
         self.damage = 1
         self.damage_callback = damage_callback
+        self.coordinates = coordinates
 
-    def move(self, coordinates):
-        dx = coordinates[0] - self.rect.x
-        dy = coordinates[1] - self.rect.y
+    def move(self):
+        dx = self.coordinates[self.counter][0] - self.rect.x
+        dy = self.coordinates[self.counter][1] - self.rect.y
         distance = math.hypot(dx, dy)
 
         if distance > self.speed:
@@ -38,11 +39,11 @@ class Monster:
             self.rect.y += self.speed * (dy / distance)
         else:
 
-            self.rect.x = coordinates[0]
-            self.rect.y = coordinates[1]
+            self.rect.x = self.coordinates[self.counter][0]
+            self.rect.y = self.coordinates[self.counter][1]
             self.counter += 1
 
-        if self.current_hp <= 0 or self.counter == 6:
+        if self.current_hp <= 0 or self.coordinates[self.counter] == self.coordinates[-1]:
             self.die()
 
     def display(self, screen):
@@ -50,7 +51,7 @@ class Monster:
 
     def die(self):
         self.is_alive = False
-        if self.counter == 6:
+        if self.coordinates[self.counter] == self.coordinates[len(self.coordinates)]:
             self.damage_callback(self.damage)
         else:
             self.money_callback(self.cost)

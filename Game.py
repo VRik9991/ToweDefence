@@ -1,4 +1,3 @@
-
 import pygame
 from utils import DamageType
 from MonsterManager import MonsterManager
@@ -19,10 +18,10 @@ class Game:
         self.tower = Tower()
         self.towers = [self.tower]
         self.base = Base(self.map.route[5])
-        self.monster_manager = MonsterManager('map1_route', self.map.route[0], self.screen, self.money_callback, self.base.get_damage)
+        self.monster_manager = MonsterManager('map1_route', self.map.route[0], self.screen, self.money_callback, self.base.get_damage, self.map.route)
         self.money = 0
         self.gold = Golda()
-        self.menu = TowerMenu([TowersButton(Tower.image, Tower.price, (80, 80), Tower.__name__, self.tower_button_callback), TowersButton(Tower.image, Tower.price, (80, 80), Tower.__name__, self.tower_button_callback)], [10, get_screen_size()[1] - 10 - 120, 510, 120])
+        self.menu = TowerMenu([TowersButton(self.tower.image, self.tower.price, (80, 80), Tower.__name__, self.tower_button_callback), TowersButton(self.tower.image, self.tower.price, (80, 80), Tower.__name__, self.tower_button_callback)], [10, get_screen_size()[1] - 10 - 120, 510, 120])
         self.healthbar = Healthbar()
 
     def money_callback(self, money_amount):
@@ -45,13 +44,8 @@ class Game:
     def process_workflow(self):
         self.monster_manager.run()
         for tower in self.towers:
-            tower.attack(self.monsters)
             tower.attack(self.monster_manager.monsters_on_screen)
-        for monster in self.monsters:
-            monster.move(self.map.route[monster.counter])
-                    
-        self.monster_manager.move_all_spawned_monsters(self.map.route)
-        self.monsters = [monster for monster in self.monsters if monster.is_alive]
+        self.monster_manager.move_all_spawned_monsters()
         self.base.image_change()
 
     def run(self):
@@ -68,4 +62,3 @@ class Game:
                         is_it_collide +=1
                 if is_it_collide == 0:
                     self.towers.append(item(coordinates[0],coordinates[1],DamageType.EARTH))
-

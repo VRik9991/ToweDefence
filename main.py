@@ -21,7 +21,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN :
             if pygame.mouse.get_pressed()[0]:
-                game.tower_placement(Tower)
+                game.tower_placement(game.tower)
 
     game.run()
 
